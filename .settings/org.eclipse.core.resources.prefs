@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/Handler/Version1.java=UTF-8
-encoding//src/Handler/Version2.java=UTF-8
+encoding//src/v1/Handler/FileHandlerVersion1.java=UTF-8
+encoding//src/v2/Handler/FileHandlerVersion1.java=UTF-8
+encoding//src/v2/Handler/FileHandlerVersion2.java=UTF-8

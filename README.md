@@ -3,4 +3,5 @@ Chương trình Tail Program
 -	Output: In ra n dòng cuối của file.
 
 Cách dùng:
-- %main <tên file> <số dòng muốn đọc>
+- %main <tên version> <tên file> <số dòng muốn đọc>
+- v1 đối với file nhỏ, v2 đối với file lớn.
