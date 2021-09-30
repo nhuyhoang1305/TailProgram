@@ -14,8 +14,8 @@ public class main {
 		// TODO Auto-generated method stub
 		long startTime = System.currentTimeMillis();
 		if (args.length == 2) {
-			String path = "C:\\Users\\hh1305\\eclipse-workspace\\TailProgram\\text\\";
-			String fileName = path + args[0];
+			//String path = "C:\\Users\\hh1305\\eclipse-workspace\\TailProgram\\text\\";
+			String fileName =  args[0];
 			int n = Integer.valueOf(args[1]);
 			
 			Input input = new Input(fileName, n);
