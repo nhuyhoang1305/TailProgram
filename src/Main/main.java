@@ -1,55 +1,48 @@
-package Main;
+package main;
 
-import java.io.IOException;
-
-import v2.Enum.VersionType;
-import v2.Handler.FileHandler;
-import v2.Handler.FileHandlerFactory;
-import v2.Input.Input;
-import v2.Output.Output;
+import main.java.com.hh1305.TailProgram.v3.Enum.VersionType;
+import main.java.com.hh1305.TailProgram.v3.Handler.FileHandler;
+import main.java.com.hh1305.TailProgram.v3.Handler.FileHandlerFactory;
+import main.java.com.hh1305.TailProgram.v3.Input.Input;
 
 public class main {
 
 	public final static int LINES = 5000;
-	
-	public static void main(String[] args) throws IOException {
-		
-		long startTime = System.currentTimeMillis();
-		if (args.length == 3) {
-			VersionType version;
-			if (args[0].equals("v1")) {
-				version = VersionType.VERSION_1;
-			}
-			else if (args[0].equals("v2")) {
-				version = VersionType.VERSION_2;
-			}
-			else {
-				throw new RuntimeException("Invalid value of number (v1 or v2)." + args[0]);
-			}
 
-			String fileName =  args[1];
-			int nLines = Integer.valueOf(args[2]);
-			
-			Input input = new Input(fileName, nLines);
+	public static void main(String[] args) throws Exception {
+
+		long startTime = System.currentTimeMillis();
+		if (args.length == 2) {
+
+			VersionType version;
+			Input input = null;
+			int nLines = -1;
+			if (args[0].equals("-f")) {
+				input = new Input(args[1]);
+				version = VersionType.MONITOR;
+			} else {
+				nLines = Integer.valueOf(args[1]);
+				input = new Input(args[0], nLines);
+				version = VersionType.VERSION_3;
+			}
 
 			FileHandler fileHandler = FileHandlerFactory.getFileHandlerVersion(version);
 			fileHandler.setInput(input);
 			fileHandler.handleFile();
-			
-			// if line need read > LINES, print data line by line.
-			if (nLines > LINES) {
-				fileHandler.outputLineByLine();
+
+			if (nLines > -1) {
+				if (nLines > LINES) {
+					fileHandler.outputLineByLine();
+				} else {
+					fileHandler.outputFile().print();
+				}
 			}
-			else {
-				Output output = fileHandler.outputFile();
-				output.print();
-			}
-			
+
+		} else {
+			System.out.println("Usage: java -jar tail.jar <fileName> <nLines>");
+			System.out.println("Or: java -jar tail.jar -f <fileName>");
 		}
-		else {
-			System.out.println("Usage: java -jar tail.jar <versionName> <fileName> <nLines>");
-		}
-		System.out.println("Execution Time : " + (double)(System.currentTimeMillis() - startTime)/1000);
+		System.out.println("Execution Time : " + (double) (System.currentTimeMillis() - startTime) / 1000);
 	}
 
 }
