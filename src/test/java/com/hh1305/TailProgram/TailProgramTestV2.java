@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.com.hh1305.TailProgram.v3.Handler.FileHandler;
-import main.java.com.hh1305.TailProgram.v3.Input.Input;
-import main.java.com.hh1305.TailProgram.v3.Handler.FileHandlerVersion2;
+import main.java.com.hh1305.TailProgram.Handler.FileHandler;
+import main.java.com.hh1305.TailProgram.Handler.v2.FileHandlerVersion2;
+import main.java.com.hh1305.TailProgram.Input.Input;
 
 class TailProgramTestV2 {
 

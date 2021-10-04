@@ -1,9 +1,9 @@
 package main;
 
-import main.java.com.hh1305.TailProgram.v3.Enum.VersionType;
-import main.java.com.hh1305.TailProgram.v3.Handler.FileHandler;
-import main.java.com.hh1305.TailProgram.v3.Handler.FileHandlerFactory;
-import main.java.com.hh1305.TailProgram.v3.Input.Input;
+import main.java.com.hh1305.TailProgram.Enum.VersionType;
+import main.java.com.hh1305.TailProgram.Handler.FileHandlerFactory;
+import main.java.com.hh1305.TailProgram.Handler.FileHandler;
+import main.java.com.hh1305.TailProgram.Input.Input;
 
 public class main {
 
