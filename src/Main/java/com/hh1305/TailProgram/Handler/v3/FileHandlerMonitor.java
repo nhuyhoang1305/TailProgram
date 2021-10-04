@@ -53,14 +53,4 @@ public class FileHandlerMonitor extends FileHandler {
 		closeFile();
 	}
 
-	@Override
-	public Output outputFile() {
-		return null;
-	}
-
-	@Override
-	public void outputLineByLine() {
-
-	}
-
 }

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import main.java.com.hh1305.TailProgram.Input.Input;
 import main.java.com.hh1305.TailProgram.Output.Output;
@@ -13,6 +15,7 @@ public abstract class FileHandler {
 	protected String path;
 	protected int n;
 	protected RandomAccessFile reader;
+	protected Queue<String> lines = new LinkedList<>();
 	
 	public FileHandler() {
 
@@ -65,10 +68,39 @@ public abstract class FileHandler {
 		}
 	}
 
+	// Nếu độ dài trong queue = n, xoá phần tử đầu rồi mới thêm text vào hàng đợi
+	protected void pushToQueue(String line) {
+		if (lines.size() >= n) {
+			lines.remove();
+			lines.add(line);
+		} else {
+			lines.add(line);
+		}
+	}
+	
 	// output
-	public abstract Output outputFile();
+	public Output outputFile() {
+
+		Output output = new Output();
+		StringBuilder builder = new StringBuilder();
+
+		for (String line : lines) {
+			builder.append(line).append('\n');
+		}
+		output.setMessage(builder.toString());
+
+		return output;
+	}
 
 	// output line by line
-	public abstract void outputLineByLine();
+	public void outputLineByLine() {
+		Output output = new Output();
+
+		for (String line : lines) {
+			output.printLineByLine(line + "\n");
+		}
+
+	}
+
 }
 

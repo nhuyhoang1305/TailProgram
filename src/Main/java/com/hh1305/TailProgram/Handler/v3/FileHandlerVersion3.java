@@ -3,19 +3,14 @@ package main.java.com.hh1305.TailProgram.Handler.v3;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.LinkedList;
-import java.util.Queue;
 
 import main.java.com.hh1305.TailProgram.Input.Input;
-import main.java.com.hh1305.TailProgram.Output.Output;
 import main.java.com.hh1305.TailProgram.Handler.FileHandler;
 
 public class FileHandlerVersion3 extends FileHandler {
 
 	// assume: a line of line has 700 characters
 	final static int LINESIZE = 700;
-
-	private Queue<String> lines = new LinkedList<String>();
 
 	public FileHandlerVersion3() {
 		super();
@@ -57,37 +52,6 @@ public class FileHandlerVersion3 extends FileHandler {
 		}
 
 		closeFile();
-	}
-
-	@Override
-	public Output outputFile() {
-
-		Output output = new Output();
-		StringBuilder builder = new StringBuilder();
-
-		for (String line : lines) {
-			builder.append(line).append('\n');
-		}
-		output.setMessage(builder.toString());
-
-		return output;
-	}
-
-	@Override
-	public void outputLineByLine() {
-		Output output = new Output();
-
-		for (String line : lines) {
-			output.printLineByLine(line + "\n");
-		}
-
-	}
-
-	public void pushToQueue(String line) {
-		if (lines.size() == n) {
-			lines.remove();
-		}
-		lines.add(line);
 	}
 
 	public int randomSeekCountLines(RandomAccessFile randomAccessFile, long seekPosition) {

@@ -30,6 +30,7 @@ public class FileHandlerVersion2 extends FileHandler {
 		try {
 			fileLength = reader.length() - 1;
 			int nLines = n;
+			
 			for (long pointer = fileLength; pointer >= 0 && nLines > 0; --pointer) {
 				reader.seek(pointer);
 				reader.read(ch);
@@ -65,6 +66,7 @@ public class FileHandlerVersion2 extends FileHandler {
 		return output;
 	}
 
+	@Override
 	public void outputLineByLine() {
 		Output output = new Output();
 		while (!lines.empty()) {
